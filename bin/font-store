@@ -14,10 +14,16 @@ var argv = yargs
         description: 'Expected font format, either "woff" or "woff2".',
         default: 'woff'
       })
+      .options('output', {
+          alias: 'o',
+          description: 'Path and filename for output file.',
+          default: null
+      })
       .argv,
     url = argv._[0],
     options = {
-      format: argv.format
+      format: argv.format,
+      output: argv.output
     };
 
 fontStore(url, options, function(err, fileName, json) {
